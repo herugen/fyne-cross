@@ -1,6 +1,6 @@
 # Fyne Cross
 
-[![CI](https://github.com/fyne-io/fyne-cross/workflows/CI/badge.svg)](https://github.com/fyne-io/fyne-cross/actions?query=workflow%3ACI) [![Go Report Card](https://goreportcard.com/badge/github.com/fyne-io/fyne-cross)](https://goreportcard.com/report/github.com/fyne-io/fyne-cross) [![GoDoc](https://godoc.org/github.com/fyne-io/fyne-cross?status.svg)](http://godoc.org/github.com/fyne-io/fyne-cross) [![version](https://img.shields.io/github/v/tag/fyne-io/fyne-cross?label=version)]()
+[![CI](https://github.com/herugen/fyne-cross/workflows/CI/badge.svg)](https://github.com/herugen/fyne-cross/actions?query=workflow%3ACI) [![Go Report Card](https://goreportcard.com/badge/github.com/herugen/fyne-cross)](https://goreportcard.com/report/github.com/herugen/fyne-cross) [![GoDoc](https://godoc.org/github.com/herugen/fyne-cross?status.svg)](http://godoc.org/github.com/herugen/fyne-cross) [![version](https://img.shields.io/github/v/tag/fyne-io/fyne-cross?label=version)]()
 
 fyne-cross is a simple tool to cross compile and create distribution packages
 for [Fyne](https://fyne.io) applications using docker images that include Linux,
@@ -44,17 +44,17 @@ Supported targets are:
 
 For go >= 1.16:
 ```
-go install github.com/fyne-io/fyne-cross@latest
+go install github.com/herugen/fyne-cross@latest
 ```
 
 To install a fyne-cross with kubernetes engine support:
 ```
-go install -tags k8s github.com/fyne-io/fyne-cross@latest
+go install -tags k8s github.com/herugen/fyne-cross@latest
 ```
 
 For older go:
 ```
-GO111MODULE=on go get -u github.com/fyne-io/fyne-cross
+GO111MODULE=on go get -u github.com/herugen/fyne-cross
 ```
 
 > `fyne-cross` will be installed in GOPATH/bin, unless GOBIN is set.
@@ -152,7 +152,7 @@ To extract the SDKs:
 
 ### Contributors
 
-See [contributors](https://github.com/fyne-io/fyne-cross/graphs/contributors) page
+See [contributors](https://github.com/herugen/fyne-cross/graphs/contributors) page
 
 ## Credits
 

@@ -1,4 +1,4 @@
-module github.com/fyne-io/fyne-cross
+module github.com/herugen/fyne-cross
 
 go 1.17
 
