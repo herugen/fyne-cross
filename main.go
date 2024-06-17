@@ -11,6 +11,7 @@ func main() {
 
 	// Define the command to use
 	commands := []command.Command{
+		&command.DarwinSDKExtract{},
 		command.NewDarwinCommand(),
 		command.NewLinuxCommand(),
 		command.NewWindowsCommand(),
