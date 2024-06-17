@@ -13,7 +13,7 @@ const (
 	// windowsOS it the windows OS name
 	windowsOS = "windows"
 	// windowsImage is the fyne-cross image for the Windows OS
-	windowsImage = "fyneio/fyne-cross-images:windows"
+	windowsImage = "ghcr.io/herugen/fyne-cross-images-linux:latest"
 )
 
 var (
