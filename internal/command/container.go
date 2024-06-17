@@ -112,10 +112,6 @@ func (a *baseContainerImage) ID() string {
 
 func (a *baseContainerImage) Target() string {
 	target := a.OS()
-	if target == androidOS && a.Architecture() != ArchMultiple {
-		target += "/" + a.Architecture().String()
-	}
-
 	return target
 }
 
@@ -188,7 +184,7 @@ func fyneCommandContainer(command string, ctx Context, image containerImage) ([]
 	icon := volume.JoinPathContainer(ctx.TmpDirContainer(), image.ID(), icon.Default)
 	args := fyneCommand(fyneBin, command, icon, ctx, image)
 
-	if ctx.Package != "." && image.OS() != androidOS {
+	if ctx.Package != "." {
 		args = append(args, "-src", ctx.Package)
 	}
 
@@ -204,10 +200,6 @@ func fynePackage(ctx Context, image containerImage) error {
 
 	// workDir default value
 	workDir := ctx.WorkDirContainer()
-
-	if image.OS() == androidOS {
-		workDir = volume.JoinPathContainer(workDir, ctx.Package)
-	}
 
 	if ctx.StripDebug {
 		args = append(args, "-release")
@@ -236,27 +228,6 @@ func fyneRelease(ctx Context, image containerImage) error {
 	workDir := ctx.WorkDirContainer()
 
 	switch image.OS() {
-	case androidOS:
-		workDir = volume.JoinPathContainer(workDir, ctx.Package)
-		if ctx.Keystore != "" {
-			args = append(args, "-keyStore", ctx.Keystore)
-		}
-		if ctx.KeystorePass != "" {
-			args = append(args, "-keyStorePass", ctx.KeystorePass)
-		}
-		if ctx.KeyPass != "" {
-			args = append(args, "-keyPass", ctx.KeyPass)
-		}
-		if ctx.KeyName != "" {
-			args = append(args, "-keyName", ctx.KeyName)
-		}
-	case iosOS:
-		if ctx.Certificate != "" {
-			args = append(args, "-certificate", ctx.Certificate)
-		}
-		if ctx.Profile != "" {
-			args = append(args, "-profile", ctx.Profile)
-		}
 	case windowsOS:
 		if ctx.Certificate != "" {
 			args = append(args, "-certificate", ctx.Certificate)

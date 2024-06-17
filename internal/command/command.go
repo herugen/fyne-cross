@@ -214,23 +214,9 @@ func fynePackageHost(ctx Context, image containerImage) (string, error) {
 	icon := volume.JoinPathHost(ctx.TmpDirHost(), image.ID(), icon.Default)
 	args := fyneCommand(fyne, "package", icon, ctx, image)
 
-	// ios packaging require certificate and profile for running on devices
-	if image.OS() == iosOS {
-		if ctx.Certificate != "" {
-			args = append(args, "-certificate", ctx.Certificate)
-		}
-		if ctx.Profile != "" {
-			args = append(args, "-profile", ctx.Profile)
-		}
-	}
-
 	workDir := ctx.WorkDirHost()
-	if image.OS() == iosOS {
-		workDir = volume.JoinPathHost(workDir, ctx.Package)
-	} else {
-		if ctx.Package != "." {
-			args = append(args, "-src", ctx.Package)
-		}
+	if ctx.Package != "." {
+		args = append(args, "-src", ctx.Package)
 	}
 
 	// when using local build, do not assume what CC is available and rely on os.Env("CC") is necessary
@@ -284,15 +270,6 @@ func fyneReleaseHost(ctx Context, image containerImage) (string, error) {
 			args = append(args, "-src", ctx.Package)
 		}
 		ext = ".pkg"
-	case iosOS:
-		workDir = volume.JoinPathHost(workDir, ctx.Package)
-		if ctx.Certificate != "" {
-			args = append(args, "-certificate", ctx.Certificate)
-		}
-		if ctx.Profile != "" {
-			args = append(args, "-profile", ctx.Profile)
-		}
-		ext = ".ipa"
 	case windowsOS:
 		if ctx.Certificate != "" {
 			args = append(args, "-certificate", ctx.Certificate)

@@ -164,8 +164,8 @@ func (i *localContainerImage) cmd(vol volume.Volume, opts options, cmdArgs []str
 	}
 
 	// add custom env variables
-	args = AppendEnv(args, i.runner.env, i.env["GOOS"] != freebsdOS)
-	args = AppendEnv(args, i.env, i.env["GOOS"] != freebsdOS)
+	args = AppendEnv(args, i.runner.env, true)
+	args = AppendEnv(args, i.env, true)
 
 	// specify the image to use
 	args = append(args, i.DockerImage)
