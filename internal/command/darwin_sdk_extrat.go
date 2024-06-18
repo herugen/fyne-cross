@@ -12,7 +12,8 @@ import (
 )
 
 const (
-	darwinSDKExtractImage  = "herugen/fyne-cross-images-darwin-sdk-extractor:latest"
+	// only support arm64 now
+	darwinSDKExtractImage  = "ghcr.io/herugen/fyne-cross-images-darwin-sdk-extract-arm64:latest"
 	darwinSDKExtractOutDir = "SDKs"
 	darwinSDKExtractScript = "darwin-sdk-extractor.sh"
 )
